@@ -17,8 +17,9 @@ const forecast = (latitude, longitude, callback) => {
                callback("Some error occured while getting the weather info", undefined)
            }
            else {
+               
                const current = body.currently
-               callback(undefined, " it is currently "+ current.temperature+" degrees out there. There is "+current.precipProbability+"% chances of rain")
+               callback(undefined, " It is currently "+ current.temperature+" degrees out there and the apparent temperature is "+current.apparentTemperature+". There is "+current.precipProbability+"% chances of rain")
            }
            
        }
