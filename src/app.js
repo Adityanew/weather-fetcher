@@ -74,6 +74,30 @@ app.get('/weather', (req, res) => {
    
 })
 
+app.get('/v2/weather', (req, res) => {
+
+    if(!req.query.latitude || !req.query.longitude) {
+        return res.send({
+            error: 'latitude and longitude not provided from location'
+        })
+    }
+        forecast(req.query.latitude, req.query.longitude, (error, data) => {
+            if(error) {
+               res.send( {
+                   error: error
+               })
+
+            }
+
+            res.send({
+                location: undefined,
+                weatherInfo: data
+            })
+        })
+    
+
+})
+
 app.get('/products', (req, res) => {
 
     if(!req.query.search){
